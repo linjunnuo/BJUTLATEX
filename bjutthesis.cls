@@ -3,6 +3,7 @@
 
 % base settings for cls file
 \LoadClass[UTF8,scheme=plain,zihao=-4,linespread=1.42,sub3sectiuon]{ctexbook}
+
 \ctexset{
   punct = quanjiao,
   space = auto,
@@ -38,10 +39,17 @@
 
 \newcommand\bjut@fontset{\csname g__ctex_fontset_tl\endcsname}
 % TODO windows font config
-\setCJKfamilyfont{song}{Songti SC}[AutoFakeBold=1.75]
-\setCJKfamilyfont{hei}{SimHei}[AutoFakeBold=1.75]
-\setCJKfamilyfont{kai}{Kaiti SC}[AutoFakeBold=1.75]
-\setCJKfamilyfont{fang}{STFangsong}[AutoFakeBold=4.5]
+
+\setCJKfamilyfont{song}{SimSun.ttf}[Path=./font/, Extension=.ttf,AutoFakeBold=1.75]
+\setCJKfamilyfont{hei}{SimHei.ttf}[Path=./font/, Extension=.ttf,AutoFakeBold=1.75]
+\setCJKfamilyfont{kai}{Kaiti.ttf}[Path=./font/, Extension=.ttf,AutoFakeBold=1.75]
+\setCJKfamilyfont{fang}{FangSong.ttf}[Path=./font/, Extension=.ttf,AutoFakeBold=4.5] %4.5
+
+% \setCJKfamilyfont{song}{NotoSerifCJKsc-Regular.otf}[Path=./font/,AutoFakeBold=1.75]
+% \setCJKfamilyfont{hei}{NotoSerifCJKsc-Bold.otf}[Path=./font/,AutoFakeBold=1.75]
+% \setCJKfamilyfont{kai}{NotoSerifCJKsc-Light.otf}[Path=./font/,AutoFakeBold=1.75]
+% \setCJKfamilyfont{fang}{NotoSerifCJKsc-Medium.otf}[Path=./font/,AutoFakeBold=4.5]
+
 
 \renewcommand{\songti}{\CJKfamily{song}}
 \renewcommand{\heiti}{\CJKfamily{hei}}
@@ -54,7 +62,7 @@
 %\renewcommand{\baselinestretch}{1.3}
 
 % 组内往届毕业生封面部分英文数字使用了加粗黑体
-% 这与规范文件不符，又组内毕业生的模版均为古早毕业生流传下来的word版本
+% 这与规范文件不符，又足内毕业生的模版均为古早毕业生流传下来的word版本
 % 姑且以为他们全都错了。
 
 %\xeCJKDeclareCharClass{CJK}{`0 -> `9}
@@ -93,7 +101,7 @@
 }
 
 % page styles
-\def\bjut@header@text{北京工业大学硕士学位论文}
+\def\bjut@header@text{北京工业大学工学硕士学位论文}
 \def\bjut@header@font{\fontsize{9.5bp}{11.5bp}\selectfont\kaishu}
 \RequirePackage{fancyhdr}
 
@@ -217,7 +225,8 @@
 \RequirePackage[sort&compress]{gbt7714}
 \bibliographystyle{gbt7714-numerical}
 \renewcommand\bibfont{\zihao{5}}
-\addtolength\bibsep{-0.7em}
+\addtolength\bibsep{-3.5mm}
+
 
 % pages
 \RequirePackage[pagecolor=white,nopagecolor=white]{pagecolor}
@@ -280,11 +289,14 @@
   \restoregeometry
   \nopagecolor
   \global\let\makecover\relax
+  %\let\cleardoublepage\clearpage
 }
 
 % 内封
+\usepackage{fontspec}
 \usepackage{ragged2e}
 \usepackage{booktabs}
+
 \newcolumntype{L}{>{\RaggedRight\hangafter=1\hangindent=0em}X}
 \renewcommand{\maketitle}{
   \begin{titlepage}
@@ -352,7 +364,7 @@
     \end{flushright}
     \vfill
     \begin{center}
-      \makebox[6.5cm][s]{\zihao{3}\heiti\bfseries 关于论文使用授权的说明}
+      \makebox[5cm][s]{\zihao{3}\heiti\bfseries 关于论文使用授权的说明}
     \end{center}
     {\justifying
       \hspace{2\ccwd}本人完全了解北京工业大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的复印件，允许论文被查阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存论文。\par
@@ -433,38 +445,27 @@
   },
 }
 
+\AtBeginDocument{
+  \pagestyle{empty}}
+
+\RequirePackage{titlesec}
+
+\titlespacing{\section}{0pt}{16pt}{10pt}
+\titlespacing{\subsection}{0pt}{16pt}{10pt}
+
 \RequirePackage{fancyvrb}
 \RequirePackage{algorithm}
 \RequirePackage{algorithmic}
 \RequirePackage{setspace}
 \RequirePackage{amsmath}
+\RequirePackage{chngcntr}
+\counterwithin*{algorithm}{chapter}
 \captionsetup[algorithm]{labelfont=rm,labelsep=colon}
 \renewcommand\thealgorithm{\thechapter-\arabic{algorithm}}
 \floatname{algorithm}{算法}
 \renewcommand{\algorithmicrequire}{输入：}
 \renewcommand{\algorithmicensure}{输出：}
 
-\AtBeginDocument{
-  \pagestyle{empty}}
-
 \setlength{\textfloatsep}{1em}
 
-\RequirePackage[thmmarks]{ntheorem}
-\theorembodyfont{\normalfont}
-\theoremheaderfont{\normalfont\heiti}
-\theoremsymbol{\ensuremath{\square}}
-\newtheorem*{proof}{证明}
-\theoremstyle{plain}
-\theoremsymbol{}
-\theoremseparator{：}
-\newtheorem{assumption}{假设}[chapter]
-\newtheorem{definition}{定义}[chapter]
-\newtheorem{proposition}{命题}[chapter]
-\newtheorem{lemma}{引理}[chapter]
-\newtheorem{theorem}{定理}[chapter]
-\newtheorem{axiom}{公理}[chapter]
-\newtheorem{corollary}{推论}[chapter]
-\newtheorem{example}{例}[chapter]
-\newtheorem{remark}{注释}[chapter]
-\newtheorem{problem}{问题}[chapter]
-\newtheorem{conjecture}{猜想}[chapter]
+\newcommand{\citen}[1]{\hspace{0.15ex}\nocite{#1}[\kern-0.35em\citenum{#1}\kern-0.05em]\hspace{-0.03em}}

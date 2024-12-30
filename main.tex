@@ -1,38 +1,38 @@
 %!TEX program = xelatex
-\documentclass{bjutthesis}
+\documentclass[fontset=overleaf]{bjutthesis}
+
 
 \bjutset{
   clc = {TP18},
   udc = {004},
   schoolcode = {10005},
   secretlevel = {公开},
-  ctitle = {},
+  ctitle = {北京工业大学硕士学位论文\LaTeX 模版},
   cauthor = {},
   cdiscipline = {},
   csupervisor = {},
   csupervstitle = {},
-  cdate = {},
+  cdate = {2023年5月},
   studentid = {},
-  etitle = {},
+  etitle = {Beijing University of Technology master's degree thesis\LaTeX template},
   cmajor = {},
-  cdegree = {},
+  cdegree = {工学硕士},
   ccollege = {},
-  corganization = {},
+  corganization = {北京工业大学},
 }
 
 \begin{document}
-\makecover
-\maketitle
-\makestate
-\frontmatter
-\include{cabstract}
-\include{eabstract}
-\makebitoc
-\mainmatter
-\include{chapt1}
-\include{chapt_intro}
-\makebib{reference}
-\backmatter
-\include{publication}
-\include{acknowledgement}
+    \makecover
+    \maketitle
+    \makestate
+    \frontmatter
+    \include{cabstract}
+    \include{eabstract}
+    \makebitoc
+    \mainmatter
+    \include{chapt1}
+    \makebib{reference}
+    \backmatter
+    \include{publication}
+    \include{acknowledgement}
 \end{document}
