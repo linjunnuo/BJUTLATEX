@@ -239,12 +239,11 @@
 
 \RequirePackage{ezinfo}
 \RequirePackage{xcolor}
-% TODO check
-\definecolor{bjut@color@official}{RGB}{0,150,195}
+
 
 % TODO 专业学位
-\definecolor{bjut@color@coverbg}{RGB}{6,146,190}
-
+\definecolor{bjut@color@coverbg-m}{RGB}{6,146,190}
+\definecolor{bjut@color@coverbg-pm}{RGB}{4,156,134}
 \RequirePackage{graphicx}
 \RequirePackage{tabularx}
 
@@ -252,12 +251,18 @@
   \begin{titlepage}
     % TODO check
     \newgeometry{left=10mm,right=10mm,top=10mm}
-    \pagecolor{bjut@color@coverbg}
+
+    \ifthenelse{\equal{\degreeType}{professional}}{
+      \pagecolor{bjut@color@coverbg-pm}
+    }{
+      \pagecolor{bjut@color@coverbg-m}
+    }
+
     \begin{flushleft}\zihao{5}\heiti\bfseries
       \renewcommand\arraystretch{.75}
       \begin{tabular}{@{}p{28mm}@{：}l}
         \makebox[28mm][s]{中文图书分类号} & \ez@clc \\
-        \makebox[28mm][s]{密级}           & \ez@secretlevel \\
+        % \makebox[28mm][s]{密级}           & \ez@secretlevel \\
         \makebox[28mm][s]{\hfill UDC}     & \ez@udc \\
         \makebox[28mm][s]{学校代码}       & \ez@schoolcode \\
       \end{tabular}
@@ -268,11 +273,22 @@
     \begin{center}
       \includegraphics[width=10.8cm]{bjut_logo_white.pdf}
       \vskip 1.6cm
-      \contour[20]{white}{
-        \makebox[12.6cm][s]{\fontsize{42}{0}\heiti\bfseries 硕士学位论文}
-      }
-      \vskip 0.8cm
-      \makebox[10.8cm][s]{\fontsize{24}{30}\selectfont MASTERAL DISSERTATION}
+
+      % 动态判断标题内容
+    \ifthenelse{\equal{\degreeType}{professional}}{
+    \contour[20]{white}{
+      \makebox[15cm][s]{\fontsize{42}{0}\heiti\bfseries 硕士专业学位论文}
+    }
+    \vskip 0.8cm
+        \makebox[10.8cm][c]{\fontsize{20}{30}\selectfont PROFESSIONAL MASTER DISSERTATION}
+    }{
+    \contour[20]{white}{
+        \makebox[12.6cm][c]{\fontsize{42}{0}\heiti\bfseries 硕士学位论文}
+    }
+    \vskip 0.8cm
+    \makebox[10.8cm][s]{\fontsize{24}{30}\selectfont MASTERAL DISSERTATION}
+    }
+
     \end{center}
     \vfill
     \begin{center}\zihao{-2}\heiti
@@ -313,7 +329,14 @@
     \end{center}
     \vskip 2.2cm
     \begin{center}
-      \makebox[12cm][s]{\zihao{-1}\kaishu\bfseries{北京工业大学工学硕士学位论文}}
+    \ifthenelse{\equal{\degreeType}{professional}}{
+        \makebox[12cm][c]{\zihao{-1}\kaishu\bfseries{北京工业大学硕士专业学位论文}}
+    }{
+        \makebox[12cm][c]{\zihao{-1}\kaishu\bfseries{北京工业大学硕士学位论文}}
+    }
+      
+      \vskip 0.98cm
+      \makebox[12cm][c]{\zihao{-1}\kaishu\bfseries{（全日制）}}
     \end{center}
     \vskip 0.98cm
     \begin{center}
