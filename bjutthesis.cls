@@ -274,7 +274,6 @@
       \includegraphics[width=10.8cm]{bjut_logo_white.pdf}
       \vskip 1.6cm
 
-      % 动态判断标题内容
     \ifthenelse{\equal{\degreeType}{professional}}{
     \contour[20]{white}{
       \makebox[15cm][s]{\fontsize{42}{0}\heiti\bfseries 硕士专业学位论文}
@@ -305,7 +304,7 @@
   \restoregeometry
   \nopagecolor
   \global\let\makecover\relax
-  %\let\cleardoublepage\clearpage
+  % \let\cleardoublepage\clearpage
 }
 
 % 内封

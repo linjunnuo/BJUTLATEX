@@ -1,6 +1,6 @@
 %!TEX program = xelatex
 \documentclass{bjutthesis}
-\newcommand{\degreeType}{professional}
+\newcommand{\degreeType}{professional} % 专业型硕士
 % \newcommand{\degreeType}{masteral} %学术型硕士
 
 \bjutset{
@@ -27,13 +27,13 @@
     \maketitle
     \makestate
     \frontmatter
-    \include{cabstract}
-    \include{eabstract}
+    \include{chapters/cabstract}
+    \include{chapters/eabstract}
     \makebitoc
     \mainmatter
-    \include{chapt1}
-    \makebib{reference}
+    \include{chapters/chapt1}
+    \makebib{chapters/reference}
     \backmatter
-    \include{publication}
-    \include{acknowledgement}
+    \include{chapters/publication}
+    \include{chapters/acknowledgement}
 \end{document}

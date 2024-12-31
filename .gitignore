@@ -1,0 +1,6 @@
+*.nlo
+*.gz
+*.xdv
+*.DS_Store
+*.fdb_latexmk
+main.pdf

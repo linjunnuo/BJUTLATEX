@@ -21,6 +21,7 @@ Overleaf版本已经通过审核并上线，同学们可以通过Overleaf开箱�
 # 预览
 
 ![](preview.png)
+![](preview-pm.png)
 
 # 怎样使用？怎样修改？
 
@@ -32,7 +33,11 @@ Overleaf版本已经通过审核并上线，同学们可以通过Overleaf开箱�
 
 ### 这个版本是学术型硕士版本，专业型硕士能否正常使用？
 
-个人精力有限，没有专门对专业型硕士做模版选项。但您只需要自行修改部分内容，如内封标题文字，外封颜色等。就可以改为专业型硕士模版。
+通过修改`main.tex`文件中论文类型`\degreeType`，来定义论文版本。
+```latex
+\newcommand{\degreeType}{professional} % 专业型硕士
+\newcommand{\degreeType}{masteral} %学术型硕士
+```
 
 ### 需要用到什么工具或平台？
 
@@ -58,7 +63,6 @@ https://www.google.com/
 
 - [ ] windows选项适配
 - [ ] 多平台测试
-- [x] 专业型硕士选项适配
 - [x] 一些细节格式
 - [ ] 还没想到
 
